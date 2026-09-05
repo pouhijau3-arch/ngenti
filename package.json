@@ -1,0 +1,16 @@
+{
+  "name": "web-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WEB-AI - a real, Vercel-deployable AI chat gateway with tool calling, plugins, and GitHub integration.",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "openai": "^4.68.0",
+    "mathjs": "^13.2.0"
+  }
+}

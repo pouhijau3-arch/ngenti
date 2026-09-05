@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>WEB-AI</title>
+  <meta name="description" content="WEB-AI — chat gateway with real tools, plugins, and GitHub integration." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+    <aside class="rail" id="rail">
+      <div class="rail-top">
+        <button class="rail-toggle" id="railToggle" aria-label="Toggle menu">☰</button>
+        <div class="brand">
+          <span class="brand-mark">WEB</span><span class="brand-mark brand-mark--accent">AI</span>
+        </div>
+      </div>
+
+      <section class="rail-section">
+        <h2 class="rail-heading">Model</h2>
+        <select id="modelSelect" class="model-select" disabled>
+          <option>Loading models…</option>
+        </select>
+        <p class="rail-note" id="modelNote"></p>
+      </section>
+
+      <section class="rail-section">
+        <h2 class="rail-heading">Plugins</h2>
+        <ul class="plugin-list" id="pluginList"></ul>
+      </section>
+
+      <section class="rail-section">
+        <h2 class="rail-heading">GitHub</h2>
+        <div id="githubPanel" class="github-panel">
+          <p class="rail-note">Not connected.</p>
+          <input id="ghTokenInput" type="password" placeholder="Personal access token" class="text-input" />
+          <button id="ghConnectBtn" class="btn btn--secondary">Connect</button>
+        </div>
+      </section>
+
+      <div class="rail-bottom">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText" class="rail-note">Checking configuration…</span>
+      </div>
+    </aside>
+
+    <main class="chat">
+      <header class="chat-header">
+        <h1 class="chat-title">WEB-AI</h1>
+        <p class="chat-subtitle">Gateway chat — tools run for real, or they say so.</p>
+      </header>
+
+      <div class="messages" id="messages">
+        <div class="empty-state" id="emptyState">
+          <p>Start a conversation. Turn plugins on in the menu to let the model search, calculate, check weather, look up time zones, find videos, or work with a connected GitHub repo.</p>
+        </div>
+      </div>
+
+      <form class="composer" id="composerForm">
+        <div class="tool-activity" id="toolActivity" hidden></div>
+        <textarea id="messageInput" class="composer-input" placeholder="Message WEB-AI…" rows="1"></textarea>
+        <div class="composer-actions">
+          <button type="submit" class="btn btn--primary" id="sendBtn">Send</button>
+          <button type="button" class="btn btn--ghost" id="stopBtn" hidden>Stop</button>
+        </div>
+      </form>
+    </main>
+
+  </div>
+
+  <!-- Approval modal for GitHub write/delete mutations -->
+  <div class="modal-backdrop" id="approvalBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <h2>Confirm GitHub change</h2>
+      <pre class="approval-detail" id="approvalDetail"></pre>
+      <div class="modal-actions">
+        <button class="btn btn--ghost" id="approvalCancel">Cancel</button>
+        <button class="btn btn--primary" id="approvalConfirm">Apply change</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
